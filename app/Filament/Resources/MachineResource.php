@@ -42,7 +42,7 @@ class MachineResource extends Resource
                 ->required()
                 ,
                  Forms\Components\Select::make('machine_type')
-                    ->options(['Snack' => 'Snack', 'Drinks' => 'Drinks', 'Snack & Drinks' => 'Snack & Drinks'])
+                    ->options(['Snack' => 'Snack', 'Hot Drinks' => 'Hot Drinks', 'Cold Drinks' => 'Cold Drinks', 'Snack & Drinks' => 'Snack & Drinks'])
                 ->required()
             ]);
     }

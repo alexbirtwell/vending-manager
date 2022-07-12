@@ -55,6 +55,7 @@ class ServiceLogResource extends Resource
                         ->options(User::all()->pluck('name','id'))
                         ->searchable()
                         ->required()
+                        ->default(auth()->user()?->id ?? 0)
                         ->helperText('The user who inputted the service request.')
                 ]),
                 Section::make('Assignment')
