@@ -15,6 +15,7 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class IncomeLogResource extends Resource
 {
@@ -56,7 +57,7 @@ class IncomeLogResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('machine_id'),
+                Tables\Columns\TextColumn::make('machine.machine_number')->url(fn ($record) => MachineResource::getUrl('view', $record->machine_id)),
                 Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('date')
                     ->date(),
@@ -74,6 +75,7 @@ class IncomeLogResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                ExportBulkAction::make()
             ]);
     }
 
