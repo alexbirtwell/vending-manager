@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Notifications\ServiceLogCompleted;
 use App\Notifications\ServiceLogCompletedCustomer;
 use App\Notifications\ServiceLogCreated;
+use App\Notifications\ServiceLogCreatedCustomer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
