@@ -35,7 +35,7 @@ class ServiceLogResource extends Resource
                 ->schema([
                     Forms\Components\DateTimePicker::make('date_completed')
                         ->label('Date Completed')
-                        ->hidden(fn (Model $record) => !$record->date_completed),
+                        ->hidden(fn (?Model $record) => !$record?->date_completed),
                     Forms\Components\Select::make('machine_id')
                         ->label('Affected Machine')
                         ->options(Machine::all()->pluck('machine_number','id'))
@@ -47,7 +47,7 @@ class ServiceLogResource extends Resource
                         ->maxLength(16777215),
                      Forms\Components\DatePicker::make('date_expected')
                         ->label('Date Expected')
-                        ->default(fn (Model $record) => $record->machine?->site?->service_days ? now()->addDays($record->machine?->site?->service_days) : now()->addDays(config('business.default_service_days')))
+                        ->default(fn (?Model $record) => $record?->machine?->site?->service_days ? now()->addDays($record->machine?->site?->service_days) : now()->addDays(config('business.default_service_days')))
                         ->required()
                         ->minDate(now()->format('Y-m-d'))
                         ->helperText('The date the service is expected to be completed.'),
