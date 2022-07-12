@@ -11,8 +11,10 @@ class ViewSite extends ViewRecord
 {
     protected static string $resource = SiteResource::class;
 
+
     protected function getActions(): array
     {
+        session()->put('site_id', $this->record->id);
         return [
             Actions\EditAction::make(),
         ];

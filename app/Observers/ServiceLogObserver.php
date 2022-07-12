@@ -19,8 +19,9 @@ class ServiceLogObserver
             $serviceLog->logged_user = auth()->user()->id;
         }
 
-         if (!$serviceLog->date_re) {
-            $serviceLog->logged_user = auth()->user()->id;
+         if (!$serviceLog->date_expected) {
+             $service_days = $serviceLog?->machine?->site->service_days ?? config('business.default_service_days');
+            $serviceLog->date_expected = now()->addDays($service_days);
         }
     }
 

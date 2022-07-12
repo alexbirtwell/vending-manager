@@ -12,6 +12,7 @@ class EditSite extends EditRecord
 
     protected function getActions(): array
     {
+        session()->put('site_id', $this->record->id);
         return [
             Actions\DeleteAction::make(),
         ];
