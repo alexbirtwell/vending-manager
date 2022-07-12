@@ -6,6 +6,7 @@ use AlexJustesen\FilamentSpatieLaravelActivitylog\RelationManagers\ActivitiesRel
 use App\Filament\Resources\MachineResource\Pages;
 use App\Filament\Resources\MachineResource\RelationManagers;
 use App\Models\Machine;
+use App\Models\Site;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -26,8 +27,12 @@ class MachineResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('machine_number'),
-                Forms\Components\TextInput::make('site_id')
-                    ->required(),
+                Forms\Components\Select::make('site_id')
+                        ->label('Site')
+                        ->options(Site::all()->pluck('name','id'))
+                        ->searchable()
+                        ->required()
+                        ->helperText('This user will be assigned to all new service requests.'),
                 Forms\Components\TextInput::make('brand')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('model')
