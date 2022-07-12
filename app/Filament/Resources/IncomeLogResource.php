@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\IncomeLogResource\Pages;
 use App\Filament\Resources\IncomeLogResource\RelationManagers;
 use App\Models\IncomeLog;
+use App\Models\Machine;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -24,16 +26,29 @@ class IncomeLogResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required(),
-                Forms\Components\TextInput::make('machine_id')
-                    ->required(),
+                Forms\Components\Select::make('user_id')
+                        ->label('Collected by')
+                        ->options(User::all()->pluck('name','id'))
+                        ->searchable()
+                        ->required()
+                        ->default(auth()->user()?->id ?? 0)
+                        ->helperText('The user who collected the funds.'),
+                Forms\Components\Select::make('machine_id')
+                        ->label('Machine')
+                        ->options(Machine::all()->pluck('machine_number','id'))
+                        ->searchable()
+                        ->required()
+                        ->helperText('This user will be assigned to all new service requests.'),
                 Forms\Components\TextInput::make('amount')
+                    ->helperText('The amount of money collected in '.config('business.currency.code').'.')
+                    ->numeric()
                     ->required(),
                 Forms\Components\DatePicker::make('date')
+                    ->default(now())
                     ->required(),
-                Forms\Components\TextInput::make('type')
-                    ->maxLength(255),
+                Forms\Components\Select::make('type')
+                    ->options(['Cash' => 'Cash', 'Card' => 'Card', 'Cash & Card' => 'Cash & Card'])
+                    ->required(),
             ]);
     }
 
