@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\MachineResource\RelationManagers;
 
+use App\Filament\Resources\MachineResource;
+use App\Filament\Resources\UserResource;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -30,7 +32,19 @@ class ServiceLogRelationManager extends RelationManager
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('machine.machine_number')
+                    ->sortable()
+                    ->url(fn ($record) => MachineResource::getUrl('view', $record->machine_id)),
                 Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('assignee.name')
+                    ->sortable()
+                    ->url(fn ($record) => UserResource::getUrl('view', $record->assigned_user)),
+                Tables\Columns\TextColumn::make('date_reported')
+                    ->sortable()
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('date_expected')
+                    ->sortable()
+                    ->dateTime(),
             ])
             ->filters([
                 //
