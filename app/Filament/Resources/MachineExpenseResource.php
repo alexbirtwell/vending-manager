@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MachineExpenseResource\Pages;
 use App\Filament\Resources\MachineExpenseResource\RelationManagers;
+use App\Models\Machine;
 use App\Models\MachineExpense;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -24,19 +25,27 @@ class MachineExpenseResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('machine_id')
+                Forms\Components\Select::make('machine_id')
+                        ->label('Machine')
+                        ->options(Machine::all()->pluck('machine_number','id'))
+                        ->searchable()
+                        ->required(),
+                Forms\Components\Select::make('type')
+                    ->options(['Stock' => 'Stock', 'Parts' => 'Parts', 'Labour' => 'Labour', 'Other' => 'Other'])
                     ->required(),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('amount')
+                    ->numeric()
                     ->required(),
                 Forms\Components\DatePicker::make('date')
-                    ->required(),
+                    ->required()
+                    ->default(now()),
                 Forms\Components\Textarea::make('description')
                     ->maxLength(16777215),
-                Forms\Components\TextInput::make('repeat')
-                    ->maxLength(255),
+                Forms\Components\Select::make('repeat')
+                    ->label('Recurring Expense')
+                    ->options([null => 'No', 'Daily' => 'Daily', 'Weekly' => 'Weekly', 'Fortnightly' => 'Fortnightly', 'Monthly' => 'Monthly', 'Yearly' => 'Yearly'])
+                    ->required()
+                ->default(null),
             ]);
     }
 

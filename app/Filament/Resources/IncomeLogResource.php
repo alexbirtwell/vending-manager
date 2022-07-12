@@ -37,8 +37,7 @@ class IncomeLogResource extends Resource
                         ->label('Machine')
                         ->options(Machine::all()->pluck('machine_number','id'))
                         ->searchable()
-                        ->required()
-                        ->helperText('This user will be assigned to all new service requests.'),
+                        ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->helperText('The amount of money collected in '.config('business.currency.code').'.')
                     ->numeric()
