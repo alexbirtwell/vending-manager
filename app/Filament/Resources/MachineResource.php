@@ -87,7 +87,7 @@ class MachineResource extends Resource
         return [
             'index' => Pages\ListMachines::route('/'),
             'create' => Pages\CreateMachine::route('/create'),
-            'view' => Pages\ViewMachine::route('/{record}'),
+            'view' => Pages\ViewMachine::route('/{record}/view'),
             'edit' => Pages\EditMachine::route('/{record}/edit'),
         ];
     }

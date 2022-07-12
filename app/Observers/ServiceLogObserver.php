@@ -12,7 +12,7 @@ class ServiceLogObserver
     public function creating(ServiceLog $serviceLog)
     {
         if (!$serviceLog->assigned_user) {
-             $serviceLog->assigned_user = Machine::findOrFail($serviceLog->machine_id)->site->default_assignee;
+             $serviceLog->assigned_user = Machine::find($serviceLog->machine_id)?->site?->default_assignee;
         }
 
         if (!$serviceLog->logged_user) {

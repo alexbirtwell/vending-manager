@@ -149,7 +149,7 @@ class SiteResource extends Resource
     public static function getPages(): array
     {
         return [
-            'view' => Pages\ViewSite::route('/{record}'),
+            'view' => Pages\ViewSite::route('/{record}/view'),
             'index' => Pages\ListSites::route('/'),
             'create' => Pages\CreateSite::route('/create'),
             'edit' => Pages\EditSite::route('/{record}/edit'),
