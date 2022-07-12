@@ -32,7 +32,7 @@ class MachineResource extends Resource
                         ->options(Site::all()->pluck('name','id'))
                         ->searchable()
                         ->required()
-                        ->helperText('This user will be assigned to all new service requests.'),
+                        ->helperText('The site the machine is installed at.'),
                 Forms\Components\TextInput::make('brand')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('model')
