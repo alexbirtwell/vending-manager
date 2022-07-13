@@ -91,7 +91,7 @@ class ServiceLogResource extends Resource
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('date_expected')
                     ->sortable()
-                    ->dateTime(),
+                    ->date(),
                 Tables\Columns\TextColumn::make('date_completed')
                     ->formatStateUsing(fn ($value) => $value ? $value->format('d/m/Y') : '-')
                     ->sortable()

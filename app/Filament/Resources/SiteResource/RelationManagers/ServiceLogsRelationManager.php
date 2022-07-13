@@ -54,7 +54,7 @@ class ServiceLogsRelationManager extends RelationManager
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('date_expected')
                     ->sortable()
-                    ->dateTime(),
+                    ->date(),
             ])
             ->filters([
                 //
