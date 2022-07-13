@@ -108,6 +108,11 @@ class ServiceLog extends Model
         return $this->notes()?->latest()?->first()?->note ?? "Non Added";
     }
 
+    public function getActivitySubjectDescription()
+    {
+        return $this->id . " - " . $this->description;
+    }
+
     public function completeListener(): void
     {
         //notifications

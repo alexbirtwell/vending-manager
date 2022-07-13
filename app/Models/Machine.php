@@ -42,7 +42,12 @@ class Machine extends Model
 
     public function getSummaryAttribute(): string
     {
-        return $this->brand . ' - ' . $this->model . '(' . $this->machine_type . ' ' . __('accepting') . ' '. $this->payment_mechanic .  ')';
+        return $this->brand . ' - ' . $this->model . ' (' . $this->machine_type . ' machine ' . __('accepting') . ' '. $this->payment_mechanic .  ')';
+    }
+
+    public function getActivitySubjectDescription()
+    {
+        return $this->summary;
     }
 
     public function getActivitylogOptions(): LogOptions
