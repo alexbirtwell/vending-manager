@@ -27,7 +27,7 @@ class MachineResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('machine_number'),
+                Forms\Components\TextInput::make('machine_number')->required()->unique(),
                 Forms\Components\Select::make('site_id')
                         ->label('Site')
                         ->options(Site::all()->pluck('name','id'))
