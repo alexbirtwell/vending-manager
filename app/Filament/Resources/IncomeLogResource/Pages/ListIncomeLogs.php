@@ -75,6 +75,9 @@ class ListIncomeLogs extends ListRecords
         $csvData = SpreadsheetFileToArrayAction::run($file);
         $rows = 0;
         foreach($csvData as $row) {
+            if (! isset($row['amount']) || ! is_numeric($row['amount'])) {
+                continue;
+            }
             $user_id = $data['user'] ?? User::where('name', $row['collected_by'])->get()->first()->id ?? auth()->user()->id;
             $machine_id = $data['machine_id'] ?? Machine::where('machine_number', $row['machine_number'])->get()->first()->id ?? 0;
             $date = $data['date'] ?? null;
