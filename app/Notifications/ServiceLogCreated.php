@@ -47,6 +47,8 @@ class ServiceLogCreated extends Notification
                     ->line('A new service log has been created.')
                     ->line('Details: ')
                     ->line('Date Expected: ' . $this->serviceLog->date_expected->format('d/m/Y') . " (".$this->serviceLog->date_expected->diffForHumans().")")
+                    ->line('Site: ' . "{$this->serviceLog->machine->site->name}")
+                    ->line('Address: ' . "{$this->serviceLog->fullAddress}")
                     ->line('Machine: ' . $this->serviceLog->machine->machine_number)
                     ->line('Machine Details: ' . $this->serviceLog->machine->summary)
                     ->line('Service Description:  ' . $this->serviceLog->description)
