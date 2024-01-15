@@ -31,7 +31,7 @@ class PublicServiceForm extends Component implements HasForms
     public string $notification_email;
     public string $service_type;
     public string $description;
-    public string $machine_id;
+    public ?string $machine_id;
 
     public function render(): \Illuminate\View\View
     {
@@ -41,6 +41,9 @@ class PublicServiceForm extends Component implements HasForms
     public function mount(): void
     {
         $this->machine = Machine::find(request()->get('machine_id')) ?? Machine::where('uuid', request()->get('machine_id'))->first();
+        if(!$this->machine) {
+            abort('404', 'Sorry we think you may have followed an incorrect link.');
+        }
         $this->machine_id =  $this->machine?->id;
     }
 
