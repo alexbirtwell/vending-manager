@@ -4,9 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
-use Illuminate\Support\ServiceProvider;
 
-class EventServiceProvider extends ServiceProvider
+class EventServiceProvider extends \Illuminate\Foundation\Support\Providers\EventServiceProvider
 {
     /**
      * The event to listener mappings for the application.
