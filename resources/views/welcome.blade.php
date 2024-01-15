@@ -27,7 +27,6 @@
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <img src="https://www.bps-uk.co.uk/wp-content/uploads/2022/11/bps-logo-landscape.png"/>
                 </div>
-
             </div>
         </div>
     </body>
