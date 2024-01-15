@@ -15,7 +15,7 @@ class ServiceLogObserver
              $serviceLog->assigned_user = Machine::find($serviceLog->machine_id)?->site?->default_assignee;
         }
 
-        if (!$serviceLog->logged_user) {
+        if (!$serviceLog->logged_user && auth()->user()) {
             $serviceLog->logged_user = auth()->user()->id;
         }
 

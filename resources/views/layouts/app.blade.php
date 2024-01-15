@@ -1,4 +1,4 @@
-<x-filament::layouts.base :title="$header">
+<x-filament::layouts.base title="BPS Vending">
     <div class="filament-app-layout flex h-full w-full overflow-x-clip">
         <div class="max-w-6xl mx-auto p-6">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">

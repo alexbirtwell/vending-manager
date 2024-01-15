@@ -21,6 +21,15 @@ class Machine extends Model
         return 'uuid';
     }
 
+    public function getNameAttribute(): string
+    {
+        if (!empty($this->brand) && !empty($this->model)) {
+            return $this->brand . ' - ' . $this->model;
+        }
+
+        return Str::title($this->machine_type . ' machine (' . $this->machine_number . ')');
+    }
+
     protected static function booted(): void
     {
         static::creating(static function (Machine $machine): void {
@@ -30,8 +39,10 @@ class Machine extends Model
 
     public function resolveRouteBinding($value, $field = null)
     {
-        return $this->where('uuid', $value)->orWhere('id', $value)->firstOrFail();
+        return $this->where('uuid', $value)->orWhere('id', $value)->ddQuery()->firstOrFail();
     }
+
+
 
     public function site(): belongsTo
     {

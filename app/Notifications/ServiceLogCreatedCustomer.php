@@ -43,7 +43,7 @@ class ServiceLogCreatedCustomer extends Notification
     {
        return (new MailMessage)
                     ->subject('Service Log Created - ' . $this->serviceLog->id)
-                    ->line('We have recieved your vending service request')
+                    ->line('We have received your vending service request')
                     ->line('Details: ')
                     ->line('Machine: ' . $this->serviceLog->machine->machine_number)
                     ->line('Machine Details: ' . $this->serviceLog->machine->summary)

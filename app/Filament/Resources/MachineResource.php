@@ -52,7 +52,12 @@ class MachineResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('machine_number'),
+                Tables\Columns\TextColumn::make('uuid')
+                    ->copyable(),
+                Tables\Columns\TextColumn::make('machine_number')
+                    ->searchable()
+                    ->sortable()
+                    ->primary(),
                 Tables\Columns\TextColumn::make('site.name')->url(fn ($record) => SiteResource::getUrl('view', $record->site_id)),
                 Tables\Columns\TextColumn::make('brand'),
                 Tables\Columns\TextColumn::make('model'),
