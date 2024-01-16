@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
 <div>
-    <livewire:forms.public-service-form />
+    <livewire:public-service-form/>
 </div>
 </x-app-layout>

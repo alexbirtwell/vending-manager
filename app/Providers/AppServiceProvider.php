@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Livewire\Forms\PublicServiceForm;
 use App\Models\MachineNote;
 use App\Models\ServiceLog;
 use App\Models\ServiceNote;
@@ -12,6 +13,7 @@ use App\Observers\ServiceNoteObserver;
 use App\Observers\SiteNoteObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,5 +40,7 @@ class AppServiceProvider extends ServiceProvider
          ServiceNote::observe(ServiceNoteObserver::class);
          SiteNote::observe(SiteNoteObserver::class);
          MachineNote::observe(MachineNoteObserver::class);
+
+        Livewire::component('public-service-form', PublicServiceForm::class);
     }
 }
