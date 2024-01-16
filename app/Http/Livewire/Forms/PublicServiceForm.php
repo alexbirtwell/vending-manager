@@ -61,14 +61,10 @@ class PublicServiceForm extends Component implements HasForms
                             fn () => static function (string $attribute, ?string $value, Closure $fail): void {
                                 $machine = Machine::where('uuid', $value)->first();
                                 if (
-                                    $value->isNotEmpty() && (
-                                        $value->match('/^[a-zA-Z0-9?]/')->isEmpty()
-                                        || $value->contains('//')
-                                    )
+                                    !$machine
                                 ) {
                                     $fail(__(
-                                        'The custom URL must be a valid, relative URL for '
-                                        . request()->root()
+                                        'We cannot find the machine id you have entered.'
                                     ));
                                 }
                             }
