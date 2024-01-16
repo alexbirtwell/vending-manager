@@ -11,7 +11,7 @@ class ListServiceLogs extends ListRecords
 {
     protected static string $resource = ServiceLogResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),

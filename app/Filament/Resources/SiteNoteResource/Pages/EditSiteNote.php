@@ -10,7 +10,7 @@ class EditSiteNote extends EditRecord
 {
     protected static string $resource = SiteNoteResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),

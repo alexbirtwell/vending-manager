@@ -11,9 +11,9 @@ use App\Models\Site;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +24,7 @@ class SiteResource extends Resource
 {
     protected static ?string $model = Site::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

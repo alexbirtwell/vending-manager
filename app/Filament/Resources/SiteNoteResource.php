@@ -6,9 +6,9 @@ use App\Filament\Resources\SiteNoteResource\Pages;
 use App\Filament\Resources\SiteNoteResource\RelationManagers;
 use App\Models\SiteNote;
 use Filament\Forms;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +20,7 @@ class SiteNoteResource extends Resource
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

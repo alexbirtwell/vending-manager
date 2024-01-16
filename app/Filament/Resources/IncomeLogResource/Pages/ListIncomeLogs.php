@@ -22,13 +22,13 @@ class ListIncomeLogs extends ListRecords
 {
     protected static string $resource = IncomeLogResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),
             Actions\Action::make('import')
                 ->action('importCSV')
-                ->icon('heroicon-s-upload')
+                ->icon('heroicon-m-arrow-up-tray')
             ->form([
                 FileUpload::make('csv')
                     ->visibility('private')

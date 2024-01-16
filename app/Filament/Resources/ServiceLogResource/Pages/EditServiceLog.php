@@ -14,7 +14,7 @@ class EditServiceLog extends EditRecord
 {
     protected static string $resource = ServiceLogResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         $hideComplete = $this->record->date_completed !== null;
         return [

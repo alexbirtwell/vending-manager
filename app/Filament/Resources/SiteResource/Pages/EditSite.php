@@ -10,7 +10,7 @@ class EditSite extends EditRecord
 {
     protected static string $resource = SiteResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         session()->put('site_id', $this->record->id);
         return [

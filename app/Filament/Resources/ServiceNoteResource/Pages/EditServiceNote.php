@@ -10,7 +10,7 @@ class EditServiceNote extends EditRecord
 {
     protected static string $resource = ServiceNoteResource::class;
 
-    protected function getActions(): array
+    protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
