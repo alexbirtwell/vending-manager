@@ -1,4 +1,4 @@
-<x-filament::layouts.base title="BPS Vending">
+<x-filament-panels::layout title="BPS Vending">
     <div class="filament-app-layout flex h-full w-full overflow-x-clip">
         <div class="max-w-6xl mx-auto p-6">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
@@ -8,11 +8,10 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <x-filament::header.heading>
+                <x-filament::section.heading>
                     {{ $header }}
-                </x-filament::header.heading>
+                </x-filament::section.heading>
             <br/>
-                <x-filament-support::hr></x-filament-support::hr>
                 <br/>
             @endif
 
@@ -22,4 +21,4 @@
             </main>
         </div>
     </div>
-</x-filament::layouts.base>
+</x-filament-panels::layout>

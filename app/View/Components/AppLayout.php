@@ -2,9 +2,7 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\Component;
-
-class AppLayout extends Component
+class AppLayout extends \Livewire\Component
 {
     /**
      * Get the view / contents that represents the component.

@@ -11,6 +11,7 @@ use App\Observers\MachineNoteObserver;
 use App\Observers\ServiceLogObserver;
 use App\Observers\ServiceNoteObserver;
 use App\Observers\SiteNoteObserver;
+use App\View\Components\AppLayout;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -42,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
          MachineNote::observe(MachineNoteObserver::class);
 
         Livewire::component('public-service-form', PublicServiceForm::class);
+//        Livewire::component('app-layout', AppLayout::class);
     }
 }
