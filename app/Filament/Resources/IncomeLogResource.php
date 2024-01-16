@@ -47,7 +47,7 @@ class IncomeLogResource extends Resource
                     ->default(now())
                     ->required(),
                 Forms\Components\Select::make('type')
-                    ->options(['Cash' => 'Cash', 'Card' => 'Card', 'Cash & Card' => 'Cash & Card'])
+                    ->options(['Cash' => 'Cash', 'Card' => 'Card', 'Cash & Card' => 'Cash & Card', 'BACS' => 'BACS', 'Other' => 'Other'])
                     ->required(),
             ]);
     }

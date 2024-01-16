@@ -39,7 +39,7 @@ class MachineResource extends Resource
                 Forms\Components\TextInput::make('model')
                     ->maxLength(255),
                 Forms\Components\Select::make('payment_mechanic')
-                    ->options(['Cash' => 'Cash', 'Card' => 'Card', 'Cash & Card' => 'Cash & Card'])
+                    ->options(['Cash' => 'Cash', 'Card' => 'Card', 'Cash & Card' => 'Cash & Card', 'Billed' => 'Billed'])
                 ->required()
                 ,
                  Forms\Components\Select::make('machine_type')
