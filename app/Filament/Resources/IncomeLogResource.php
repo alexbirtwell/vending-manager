@@ -57,7 +57,7 @@ class IncomeLogResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('machine.machine_number')->url(fn ($record) => MachineResource::getUrl('view', $record->machine_id)),
+                Tables\Columns\TextColumn::make('machine.machine_number')->url(fn ($record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
                 Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('date')
                     ->date(),

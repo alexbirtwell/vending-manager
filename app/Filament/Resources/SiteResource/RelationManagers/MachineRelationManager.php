@@ -45,7 +45,7 @@ class MachineRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()->url(fn (Model $record) => MachineResource::getUrl('view', $record->id))
+                Tables\Actions\ViewAction::make()->url(fn (Model $record) => MachineResource::getUrl('view', ['record' => $record->id]))
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

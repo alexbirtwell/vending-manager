@@ -52,16 +52,16 @@ class MachineResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\BadgeColumn::make('uuid')
-                    ->size('xs')
-                    ->color('primary')
-                ->copyable()
-    ->copyMessage('UUID copied to clipboard')
-    ->copyMessageDuration(1500),
+                Tables\Columns\TextColumn::make('uuid')
+                    ->copyable()
+                    ->copyMessage('UUID copied to clipboard')
+                    ->copyMessageDuration(1500)
+                    ->badge()
+                    ->color('primary'),
                 Tables\Columns\TextColumn::make('machine_number')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('site.name')->url(fn ($record) => SiteResource::getUrl('view', $record->site_id)),
+                Tables\Columns\TextColumn::make('site.name')->url(fn ($record) => SiteResource::getUrl('view', ['record' => $record->site_id])),
                 Tables\Columns\TextColumn::make('brand'),
                 Tables\Columns\TextColumn::make('model'),
                 Tables\Columns\TextColumn::make('payment_mechanic'),

@@ -54,7 +54,7 @@ class MachineExpenseResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('machine.machine_number')->url(fn ($record) => MachineResource::getUrl('view', $record->machine_id)),
+                Tables\Columns\TextColumn::make('machine.machine_number')->url(fn ($record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
                 Tables\Columns\TextColumn::make('type'),
                 Tables\Columns\TextColumn::make('amount')->formatStateUsing(fn ($record) => currency_format($record->amount)),
                 Tables\Columns\TextColumn::make('date')

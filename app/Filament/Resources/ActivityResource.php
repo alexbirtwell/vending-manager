@@ -95,7 +95,7 @@ class ActivityResource extends \AlexJustesen\FilamentSpatieLaravelActivitylog\Re
                             return;
                         }
 
-                        return $resource::getUrl('edit', ['record' => $record->subject]) ?? null;
+                        return $resource::getUrl('edit', ['record' => $record?->subject]) ?? null;
                     }, shouldOpenInNewTab: true),
                 TextColumn::make('causer.name')
                     ->label(__('User'))

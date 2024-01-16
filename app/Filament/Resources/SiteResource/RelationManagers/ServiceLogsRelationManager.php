@@ -44,11 +44,11 @@ class ServiceLogsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('machine.machine_number')
                     ->sortable()
-                    ->url(fn ($record) => MachineResource::getUrl('view', $record->machine_id)),
+                    ->url(fn ($record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
                 Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('assignee.name')
                     ->sortable()
-                    ->url(fn ($record) => UserResource::getUrl('view', $record->assigned_user)),
+                    ->url(fn ($record) => UserResource::getUrl('view', ['record' => $record?->assigned_user->id])),
                 Tables\Columns\TextColumn::make('date_reported')
                     ->sortable()
                     ->dateTime(),
@@ -63,7 +63,7 @@ class ServiceLogsRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()->url(fn (Model $record) => ServiceLogResource::getUrl('edit', $record->id)),
+                Tables\Actions\ViewAction::make()->url(fn (Model $record) => ServiceLogResource::getUrl('edit', ['record' => $record?->id])),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

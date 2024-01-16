@@ -100,7 +100,7 @@ class ServiceLog extends Model
 
     public function getUrlAttribute(): string
     {
-        return ServiceLogResource::getUrl('edit', $this->id);
+        return ServiceLogResource::getUrl('edit', ['record' => $this->id]);
     }
 
     public function getLatestNoteAttribute(): string
