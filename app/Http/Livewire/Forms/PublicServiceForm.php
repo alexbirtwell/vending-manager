@@ -107,10 +107,12 @@ class PublicServiceForm extends Component implements HasForms
             unset($data['notification_email']);
         }
 
+        $data['machine_id'] = Machine::where('uuid', $data['machine_uuid'])->first()->id;
+
         $data['description'] = Str::title($data['service_type']) . " - " . $data['description'];
 
         $data['description'] .= " (online request by " . $data['name'] . ")";
-        unset($data['notify'], $data['name'], $data['service_type']);
+        unset($data['notify'], $data['name'], $data['service_type'], $data['machine_uuid']);
         $log = ServiceLog::create(
             $data
         );
