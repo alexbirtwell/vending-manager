@@ -17,6 +17,8 @@ use Filament\Resources\Pages\ListRecords;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use pxlrbt\FilamentExcel\Actions\Pages\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class ListIncomeLogs extends ListRecords
 {
@@ -26,6 +28,10 @@ class ListIncomeLogs extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            ExportAction::make()
+                ->exports([
+                    ExcelExport::make('table')->fromTable(),
+                ]),
             Actions\Action::make('import')
                 ->action('importCSV')
                 ->icon('heroicon-m-arrow-up-tray')
