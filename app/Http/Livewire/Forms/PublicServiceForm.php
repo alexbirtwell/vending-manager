@@ -33,6 +33,7 @@ class PublicServiceForm extends Component implements HasForms
     public string $service_type;
     public string $description;
     public ?string $machine_id;
+    public ?string $machine_uuid;
 
     public function render(): \Illuminate\View\View
     {
