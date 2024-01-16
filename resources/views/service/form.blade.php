@@ -4,16 +4,13 @@
             color: #e3342f;
         }
     </style>
+    <h2 class="mb-4 text-2xl font-extrabold text-gray-600 dark:text-white">Service Request</h2>
+
     @if($this->submitted)
-        <div class="w-full max-w-xs mx-auto bg-white shadow-md overflow-hidden md:max-w-6xl">
-    <div class="md:flex">
-        <div class="p-8">
-            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"><x-dynamic-component component="heroicon-o-check" class="h-8 w-8 inline-block mx-6"/>Success</div>
-            <div class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Your service request has been submitted successfully.</div>
-            <p class="mt-2 text-gray-500">Your unique service identifier is: <span class="font-medium">{{ $submitted }}</span>. </p>
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg">
+            <p class="text-lg font-semibold">Service Request Submitted</p>
+            <p>Your request has been successfully submitted and we will have an engineer on site ASAP. Your reference for this service is <strong>{{$submitted}}</strong>.</p>
         </div>
-    </div>
-</div>
     @endif
 
       <form wire:submit.prevent="submitService">

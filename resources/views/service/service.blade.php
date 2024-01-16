@@ -33,8 +33,8 @@
         @vite('resources/css/app.css')
     </head>
 
-     <body class="antialiased">
-        <div class="mx-auto relative justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 px-6 sm:pt-0">
+     <body class="antialiased bg-gray-100 dark:bg-gray-900">
+        <div class="mx-auto md:w-2/3 lg:w-1/3 relative justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 px-6 sm:pt-0">
             <div class="justify-center pt-8 sm:justify-start sm:pt-0">
                 <img src="https://www.bps-uk.co.uk/wp-content/uploads/2022/11/bps-logo-landscape.png" style="max-width: 100%;"/>
             </div>
