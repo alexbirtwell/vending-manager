@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Forms;
 use App\Models\Country;
 use App\Models\Machine;
 use App\Models\ServiceLog;
+use Closure;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
@@ -40,11 +41,11 @@ class PublicServiceForm extends Component implements HasForms
 
     public function mount(): void
     {
-        $this->machine = Machine::find(request()->get('machine_id')) ?? Machine::where('uuid', request()->get('machine_id'))->first();
-        if(!$this->machine) {
-            abort('404', 'Sorry we think you may have followed an incorrect link.');
-        }
-        $this->machine_id =  $this->machine?->id;
+//        $this->machine = Machine::find(request()->get('machine_id')) ?? Machine::where('uuid', request()->get('machine_id'))->first();
+//        if(!$this->machine) {
+//            abort('404', 'Sorry we think you may have followed an incorrect link.');
+//        }
+//        $this->machine_id =  $this->machine?->id;
     }
 
 
@@ -54,8 +55,27 @@ class PublicServiceForm extends Component implements HasForms
             return [];
         }
         return [
-            Placeholder::make('site_details')
-                ->label(fn () => 'You are currently logging a vending service request for ' . $this->machine?->name . ' at ' . $this->machine?->site->name),
+            TextInput::make('machine_uuid')
+                ->label('Machine Id')
+                ->rule(
+                            fn () => static function (string $attribute, ?string $value, Closure $fail): void {
+                                $machine = Machine::where('uuid', $value)->first();
+                                if (
+                                    $value->isNotEmpty() && (
+                                        $value->match('/^[a-zA-Z0-9?]/')->isEmpty()
+                                        || $value->contains('//')
+                                    )
+                                ) {
+                                    $fail(__(
+                                        'The custom URL must be a valid, relative URL for '
+                                        . request()->root()
+                                    ));
+                                }
+                            }
+                        )
+                ->default(fn () => request()->get('machine_id'))
+                ->helperText('The 5 digit code displayed on the machine by the QR code')
+                ->required(),
             TextInput::make('name')
                 ->autofocus()
                 ->required()
@@ -86,6 +106,7 @@ class PublicServiceForm extends Component implements HasForms
     public function submitService()
     {
         $data = $this->form->getState();
+
         if(!$data['notify']) {
             unset($data['notification_email']);
         }
