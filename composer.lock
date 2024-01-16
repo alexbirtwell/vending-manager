@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe6187224df434520437cbe81a99de8a",
+    "content-hash": "e31392dab7609de23932d3e356aadb1c",
     "packages": [
         {
             "name": "alexjustesen/filament-spatie-laravel-activitylog",
@@ -7664,23 +7664,23 @@
         },
         {
             "name": "pxlrbt/filament-excel",
-            "version": "v1.1.13",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pxlrbt/filament-excel.git",
-                "reference": "771952cfb26a79fc3da0cf78c916188ccf893dcd"
+                "reference": "83f6598169c8c3f5b961d32c165cb1a44dd5f024"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pxlrbt/filament-excel/zipball/771952cfb26a79fc3da0cf78c916188ccf893dcd",
-                "reference": "771952cfb26a79fc3da0cf78c916188ccf893dcd",
+                "url": "https://api.github.com/repos/pxlrbt/filament-excel/zipball/83f6598169c8c3f5b961d32c165cb1a44dd5f024",
+                "reference": "83f6598169c8c3f5b961d32c165cb1a44dd5f024",
                 "shasum": ""
             },
             "require": {
                 "anourvalar/eloquent-serialize": "^1.2",
-                "filament/filament": "^2.13.24|^3.0",
+                "filament/filament": "^3.0.0-stable",
                 "maatwebsite/excel": "^3.1",
-                "php": "^8.0"
+                "php": "^8.1"
             },
             "require-dev": {
                 "laravel/pint": "^1.10"
@@ -7719,7 +7719,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pxlrbt/filament-excel/issues",
-                "source": "https://github.com/pxlrbt/filament-excel/tree/v1.1.13"
+                "source": "https://github.com/pxlrbt/filament-excel/tree/v2.3.0"
             },
             "funding": [
                 {
@@ -7727,7 +7727,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-05T19:06:22+00:00"
+            "time": "2024-01-05T13:47:29+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
