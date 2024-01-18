@@ -14,6 +14,8 @@ class Site extends Model
 {
     use HasFactory, LogsActivity;
 
+    public $timestamps = true;
+
     protected $guarded = [];
 
     public function country(): belongsTo

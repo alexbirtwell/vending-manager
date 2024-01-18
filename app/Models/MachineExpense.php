@@ -11,6 +11,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class MachineExpense extends Model
 {
     use HasFactory, LogsActivity;
+
+    public $timestamps = true;
   protected $guarded = [];
     public function machine(): belongsTo
     {

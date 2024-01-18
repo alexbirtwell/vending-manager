@@ -14,6 +14,7 @@ class ServiceNote extends Model
 {
     use HasFactory, LogsActivity;
       protected $guarded = [];
+      public $timestamps = true;
 
     public function serviceLog(): BelongsTo
     {

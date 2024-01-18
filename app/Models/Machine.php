@@ -16,6 +16,8 @@ class Machine extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
+
     public function getRouteKeyName(): string
     {
         return 'uuid';

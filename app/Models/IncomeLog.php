@@ -14,6 +14,7 @@ class IncomeLog extends Model
 
     protected $guarded = [];
 
+    public $timestamps = true;
     public function machine(): BelongsTo
     {
         return $this->belongsTo(Machine::class);

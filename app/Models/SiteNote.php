@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class SiteNote extends Model
 {
     use HasFactory;
+    public $timestamps = true;
   protected $guarded = [];
     public function site(): BelongsTo
     {

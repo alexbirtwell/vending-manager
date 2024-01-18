@@ -23,7 +23,13 @@ class ServiceLog extends Model
 
     protected $guarded = [];
 
-    protected $dates = ['date_completed', 'date_reported', 'date_expected'];
+    protected $casts = [
+        'date_completed' => 'datetime',
+        'date_reported' => 'datetime',
+        'date_expected' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
     public function machine(): BelongsTo
     {
         return $this->belongsTo(Machine::class);
