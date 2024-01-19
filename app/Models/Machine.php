@@ -35,7 +35,11 @@ class Machine extends Model
     protected static function booted(): void
     {
         static::creating(static function (Machine $machine): void {
-            $machine->uuid ??= Str::uuid();
+            $uuid ??= Str::substr(Str::uuid(), -5);
+            while(Machine::where('machine_uuid', $uuid)->count()) {
+                 $uuid ??= Str::substr(Str::uuid(), -5);
+            }
+            $machine->uuid = $uuid;
         });
     }
 

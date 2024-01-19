@@ -15,6 +15,7 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class MachineResource extends Resource
@@ -27,6 +28,7 @@ class MachineResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('uuid')->hiddenOn('create')->required()->length(5)->unique(ignoreRecord: true),
                 Forms\Components\TextInput::make('machine_number')->required()->unique(ignoreRecord: true),
                 Forms\Components\Select::make('site_id')
                         ->label('Site')
