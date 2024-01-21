@@ -56,15 +56,17 @@ class IncomeLogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('machine.machine_number')->url(fn ($record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
-                Tables\Columns\TextColumn::make('amount'),
+                Tables\Columns\TextColumn::make('user.name'),
+                Tables\Columns\TextColumn::make('machine.machine_number')
+                    ->description(fn (IncomeLog $record) => $record?->machine?->site->name)
+                    ->url(fn (IncomeLog $record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
+                Tables\Columns\TextColumn::make('amount')
+                    ->prefix(config('business.currency.symbol')),
                 Tables\Columns\TextColumn::make('date')
                     ->date(),
                 Tables\Columns\TextColumn::make('type'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Created')
                     ->dateTime(),
             ])
             ->filters([

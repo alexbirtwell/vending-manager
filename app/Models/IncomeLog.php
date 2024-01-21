@@ -20,6 +20,11 @@ class IncomeLog extends Model
         return $this->belongsTo(Machine::class);
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

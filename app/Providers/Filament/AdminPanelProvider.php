@@ -2,6 +2,14 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\IncomeLogResource\Widgets\IncomeChart;
+use App\Filament\Resources\SiteResource\Widgets\MyOpenServiceLogs;
+use App\Filament\Resources\SiteResource\Widgets\OpenServiceLogs;
+use App\Filament\Resources\SiteResource\Widgets\TopMachinesMonth;
+use App\Filament\Resources\SiteResource\Widgets\TopMachinesTotal;
+use App\Filament\Resources\SiteResource\Widgets\TopSites;
+use App\Filament\Widgets\ServiceLogsOverview;
+use App\Models\IncomeLog;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -39,7 +47,15 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                MyOpenServiceLogs::class,
+                Widgets\StatsOverviewWidget::class,
+                ServiceLogsOverview::class,
+                TopSites::class,
+                OpenServiceLogs::class,
+                TopMachinesMonth::class,
+                TopMachinesTotal::class,
+                IncomeChart::class
+
             ])
             ->middleware([
                 EncryptCookies::class,

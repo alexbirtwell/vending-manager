@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ListServiceLogs extends ListRecords
 {
+    protected ?string $maxContentWidth = 'full';
     protected static string $resource = ServiceLogResource::class;
 
     protected function getHeaderActions(): array

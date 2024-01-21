@@ -23,12 +23,16 @@ class MachineResource extends Resource
     protected static ?string $model = Machine::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('uuid')->hiddenOn('create')->required()->length(5)->unique(ignoreRecord: true),
+                Forms\Components\TextInput::make('uuid')
+                    ->label('Unique Code')
+                    ->hiddenOn('create')
+                    ->required()
+                    ->length(5)
+                    ->unique(ignoreRecord: true),
                 Forms\Components\TextInput::make('machine_number')->required()->unique(ignoreRecord: true),
                 Forms\Components\Select::make('site_id')
                         ->label('Site')
@@ -55,6 +59,7 @@ class MachineResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('uuid')
+                    ->label('Code')
                     ->copyable()
                     ->copyMessage('UUID copied to clipboard')
                     ->copyMessageDuration(1500)
@@ -68,9 +73,16 @@ class MachineResource extends Resource
                 Tables\Columns\TextColumn::make('model'),
                 Tables\Columns\TextColumn::make('payment_mechanic'),
                 Tables\Columns\TextColumn::make('machine_type'),
-            ])
-            ->filters([
-                //
+                Tables\Columns\TextColumn::make('income_sum_amount')
+                    ->sum('income', 'amount')
+                    ->numeric(2)
+                    ->prefix(config('business.currency.symbol'))
+                    ->label('Income'),
+                Tables\Columns\TextColumn::make('expenses_sum_amount')
+                    ->sum('expenses', 'amount')
+                    ->numeric(2)
+                    ->prefix(config('business.currency.symbol'))
+                    ->label('Expenses'),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
