@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ServiceLogResource\Pages;
 
 use App\Filament\Resources\ServiceLogResource;
 use App\Models\ServiceLog;
+use Filament\Notifications\Notification;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Collection;
@@ -35,7 +36,12 @@ class EditServiceLog extends EditRecord
         $record = $this->getRecord();
         $record->date_completed = now();
         $record->save();
-        $this->notify('success', 'Service Log Completed!');
+        Notification::make('success')
+            ->body('Service Log marked as complete.')
+            ->success()
+            ->persistent()
+            ->send();
+
         $this->redirect(ServiceLogResource::getUrl('index'));
     }
 }

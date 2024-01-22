@@ -74,6 +74,9 @@ class ServiceLogResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->label('Reference')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('machine.site.name')
                     ->label('Site')
                     ->sortable()
