@@ -9,6 +9,7 @@ use App\Filament\Resources\SiteResource\Widgets\TopMachinesMonth;
 use App\Filament\Resources\SiteResource\Widgets\TopMachinesTotal;
 use App\Filament\Resources\SiteResource\Widgets\TopSites;
 use App\Filament\Widgets\ServiceLogsOverview;
+use App\Filament\Widgets\StatsOverview;
 use App\Models\IncomeLog;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -48,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 MyOpenServiceLogs::class,
-                Widgets\StatsOverviewWidget::class,
+                StatsOverview::class,
                 ServiceLogsOverview::class,
                 TopSites::class,
                 OpenServiceLogs::class,
