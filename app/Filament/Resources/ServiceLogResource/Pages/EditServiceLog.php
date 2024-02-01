@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use RalphJSmit\Filament\Activitylog\Actions\TimelineAction;
 
 class EditServiceLog extends EditRecord
 {
@@ -19,6 +20,8 @@ class EditServiceLog extends EditRecord
     {
         $hideComplete = $this->record->date_completed !== null;
         return [
+            TimelineAction::make()
+                ->label('History'),
             Actions\DeleteAction::make(),
             Actions\EditAction::make('Complete')
                 ->label('Mark as Complete')

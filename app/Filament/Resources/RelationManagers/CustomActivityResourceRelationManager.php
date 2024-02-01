@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\RelationManagers;
 
-use AlexJustesen\FilamentSpatieLaravelActivitylog\RelationManagers\ActivitiesRelationManager;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -12,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
-class CustomActivityResourceRelationManager extends ActivitiesRelationManager
+class CustomActivityResourceRelationManager extends RelationManager
 {
 
     public function form(Form $form): Form

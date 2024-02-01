@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "alexjustesen/filament-spatie-laravel-activitylog": "dev-main",
         "devaslanphp/filament-avatar": "^1.0",
         "filament/filament": "^3.0-stable",
         "guzzlehttp/guzzle": "^7.2",
@@ -18,18 +17,19 @@
         "phpoffice/phpspreadsheet": "^1.29",
         "phpsa/filament-authentication": "dev-main",
         "pxlrbt/filament-excel": "^2.1",
+        "ralphjsmit/laravel-filament-activitylog": "*",
         "sentry/sentry-laravel": "^3.6",
         "spatie/laravel-data": "^3.6",
         "stechstudio/filament-impersonate": "^3.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "*",
         "fakerphp/faker": "^1.23.1",
         "laravel/sail": "*",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.6.15",
-        "spatie/laravel-ignition": "^2.4",
-        "wulfheart/laravel-actions-ide-helper": "^0.4.0"
+        "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
         "psr-4": {
@@ -73,7 +73,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "ralphjsmit/packages": true
         }
     },
     "minimum-stability": "dev",
@@ -81,12 +82,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/alexbirtwell/filament-spatie-laravel-activitylog"
+            "url": "https://github.com/alexbirtwell/filament-authentication"
         },
         {
-            "type": "vcs",
-            "url": "https://github.com/alexbirtwell/filament-authentication"
+            "type": "composer",
+            "url": "https://satis.ralphjsmit.com"
         }
-
     ]
 }

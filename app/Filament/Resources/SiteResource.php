@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use AlexJustesen\FilamentSpatieLaravelActivitylog\RelationManagers\ActivitiesRelationManager;
 use App\Filament\Resources\SiteResource\RelationManagers\ServiceLogsRelationManager;
 use App\Filament\Resources\SiteResource\Pages;
 use App\Filament\Resources\SiteResource\RelationManagers;
@@ -148,8 +147,7 @@ class SiteResource extends Resource
 
             RelationManagers\MachineRelationManager::class,
             RelationManagers\NotesRelationManager::class,
-            ServiceLogsRelationManager::class,
-            ActivitiesRelationManager::class
+            ServiceLogsRelationManager::class
         ];
     }
 

@@ -2,13 +2,13 @@
 namespace App\Filament\Resources;
 
 use AlexJustesen\FilamentSpatieLaravelActivitylog\Contracts\IsActivitySubject;
-use AlexJustesen\FilamentSpatieLaravelActivitylog\RelationManagers\ActivitiesRelationManager;
 use AlexJustesen\FilamentSpatieLaravelActivitylog\ResourceFinder;
 use App\Filament\Resources\ActivityResource\ListActivities;
 use App\Filament\Resources\ActivityResource\ViewActivity;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\Activitylog\Models\Activity;
 
-class ActivityResource extends \AlexJustesen\FilamentSpatieLaravelActivitylog\Resources\ActivityResource
+class ActivityResource extends Resource
 {
     public static function form(Form $form): Form
     {

@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use AlexJustesen\FilamentSpatieLaravelActivitylog\RelationManagers\ActivitiesRelationManager;
 use App\Filament\Resources\MachineResource\Pages;
 use App\Filament\Resources\MachineResource\RelationManagers;
 use App\Models\Machine;
@@ -102,7 +101,7 @@ class MachineResource extends Resource
             RelationManagers\ExpensesRelationManager::class,
             RelationManagers\IncomeRelationManager::class,
             RelationManagers\NotesRelationManager::class,
-            ActivitiesRelationManager::class
+
         ];
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use AlexJustesen\FilamentSpatieLaravelActivitylog\RelationManagers\ActivitiesRelationManager;
 use App\Filament\Resources\ServiceLogResource\Pages;
 use App\Filament\Resources\ServiceLogResource\RelationManagers;
 use App\Models\Machine;
@@ -127,14 +126,6 @@ class ServiceLogResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
                 ExportBulkAction::make()
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-            ActivitiesRelationManager::class
-        ];
     }
 
     public static function getPages(): array
