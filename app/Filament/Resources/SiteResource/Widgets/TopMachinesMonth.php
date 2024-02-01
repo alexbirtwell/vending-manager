@@ -18,7 +18,7 @@ class TopMachinesMonth extends BaseWidget
             ->query(
                 Machine::query()
                     ->whereHas('income', function ($query) {
-                        $query->where('created_at', '>=', now()->startOfMonth());
+                        $query->where('date', '>=', now()->startOfMonth());
                     })
                     ->withSum('income', 'amount')
                     ->orderBy('income_sum_amount', 'desc')

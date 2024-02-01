@@ -14,9 +14,9 @@ class IncomeChart extends ChartWidget
 
     protected function getData(): array
     {
-        $query = IncomeLog::select(DB::raw('SUM(amount) as total_amount, YEAR(created_at) as year, MONTH(created_at) as month'))
-            ->where('created_at', '>=', now()->subMonths(12))
-            ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+        $query = IncomeLog::select(DB::raw('SUM(amount) as total_amount, YEAR(date) as year, MONTH(date) as month'))
+            ->where('date', '>=', now()->subMonths(12))
+            ->groupBy(DB::raw('YEAR(date)'), DB::raw('MONTH(date)'))
             ->get();
         return [
             'datasets' => [
