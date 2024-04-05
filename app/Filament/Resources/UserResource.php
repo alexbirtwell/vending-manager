@@ -55,8 +55,7 @@ class UserResource extends Resource
                     ->placeholder('John Doe'),
                 TextInput::make('email')
                     ->dehydrated(false)
-                    ->disabled()
-                    ->hidden(fn (?User $record) => $record === null),
+                    ->disabled(),
                 TextInput::make('password')
                     ->password()
                     ->label('Change Password')
