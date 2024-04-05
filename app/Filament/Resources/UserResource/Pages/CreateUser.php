@@ -20,8 +20,8 @@ class CreateUser extends CreateRecord
 
     protected function afterCreate(): void
     {
-        if ($email = $this->form->getState()['email']) {
-            Password::sendResetLink(['email' => $email]);
+        if ($this->record) {
+            Password::sendResetLink(['email' => $this->record->email]);
             Notification::make('reset')
                 ->success()
                 ->body('Password instructions sent.')
