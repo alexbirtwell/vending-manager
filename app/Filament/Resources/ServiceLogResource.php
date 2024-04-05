@@ -86,8 +86,7 @@ class ServiceLogResource extends Resource
                     ->url(fn ($record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
                 Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('assignee.name')
-                    ->sortable()
-                    ->url(fn ($record) => UserResource::getUrl('view', ['record' => $record?->assigned_user])),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('date_reported')
                     ->sortable()
                     ->dateTime(),

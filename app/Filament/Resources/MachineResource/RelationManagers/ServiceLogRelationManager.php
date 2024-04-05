@@ -38,9 +38,8 @@ class ServiceLogRelationManager extends RelationManager
                     ->url(fn ($record) => MachineResource::getUrl('view', ['record' => $record->machine_id])),
                 Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('assignee.name')
-                    ->sortable()
-                    ->url(fn ($record) => UserResource::getUrl('edit', ['record' => $record?->assigned_user->id])),
-                Tables\Columns\TextColumn::make('date_reported')
+                    ->sortable(),
+        Tables\Columns\TextColumn::make('date_reported')
                     ->sortable()
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('date_expected')
