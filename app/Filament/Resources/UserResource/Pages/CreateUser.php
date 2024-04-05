@@ -21,11 +21,11 @@ class CreateUser extends CreateRecord
     protected function afterCreate(): void
     {
         if ($this->record) {
-            Password::sendResetLink(['email' => $this->record->email]);
-            Notification::make('reset')
-                ->success()
-                ->body('Password instructions sent.')
-                ->send();
+//            Password::sendResetLink(['email' => $this->record->email]);
+//            Notification::make('reset')
+//                ->success()
+//                ->body('Password instructions sent.')
+//                ->send();
 
         }
     }

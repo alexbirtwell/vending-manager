@@ -25,6 +25,8 @@ use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
 {
+     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     public static function canCreate(): bool
     {
         return auth()->user()->hasPermissionTo('Create User');
