@@ -73,6 +73,10 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->login()
+        ->passwordReset()
+        ->emailVerification()
+        ->profile()
             ->plugins([
                 FilamentActivitylog::make()
             ]);
