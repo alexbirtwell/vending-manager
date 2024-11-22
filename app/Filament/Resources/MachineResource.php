@@ -32,7 +32,10 @@ class MachineResource extends Resource
                     ->required()
                     ->length(5)
                     ->unique(ignoreRecord: true),
-                Forms\Components\TextInput::make('machine_number')->required()->unique(ignoreRecord: true),
+                Forms\Components\TextInput::make('machine_number')
+                    ->integer()
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 Forms\Components\Select::make('site_id')
                         ->label('Site')
                         ->options(Site::all()->pluck('name','id'))
