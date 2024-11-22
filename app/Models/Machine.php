@@ -36,7 +36,7 @@ class Machine extends Model
     {
         static::creating(static function (Machine $machine): void {
             $uuid ??= Str::substr(Str::uuid(), -5);
-            while(Machine::where('machine_uuid', $uuid)->count()) {
+            while(Machine::where('uuid', $uuid)->count()) {
                  $uuid ??= Str::substr(Str::uuid(), -5);
             }
             $machine->uuid = $uuid;
