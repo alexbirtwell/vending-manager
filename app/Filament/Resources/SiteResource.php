@@ -108,25 +108,37 @@ class SiteResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('address_line_1'),
-                Tables\Columns\TextColumn::make('address_line_2'),
-                Tables\Columns\TextColumn::make('address_city'),
-                Tables\Columns\TextColumn::make('address_region'),
-                Tables\Columns\TextColumn::make('address_postal_code'),
-                Tables\Columns\TextColumn::make('address_country_id'),
-                Tables\Columns\TextColumn::make('main_contact_name'),
-                Tables\Columns\TextColumn::make('main_contact_telephone'),
-                Tables\Columns\TextColumn::make('main_contact_email'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('coordinates'),
-                Tables\Columns\TextColumn::make('distance'),
-                Tables\Columns\TextColumn::make('travel_time_minutes'),
+                Tables\Columns\TextColumn::make('name')
+                    ->description(fn ($record) => $record->getAddress()),
+                Tables\Columns\TextColumn::make('main_contact_name')
+                    ->label('Main Contact')
+                    ->description(fn ($record) => $record->main_contact_telephone . ' | ' . $record->main_contact_email)
+                    ->searchable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->size('xs')
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('coordinates')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('distance')
+                    ->suffix(__('miles'))
+                    ->description(fn($record) => $record->travel_time_minutes ? $record->travel_time_minutes . ' mins' : null)
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('total_value')
+                    ->toggleable()
+                    ->label('Total Value')
+                    ->money(config('business.currency.code'))
+                    ->description(fn ($record) => config('business.currency.symbol') . number_format($record->incomeLogs()->where('date','>', now()->subDays(30))->sum('amount'),2) . ' in last 30 days')
+                    ->getStateUsing(fn ($record) => $record->incomeLogs->sum('amount')),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->dateTime(),
-                Tables\Columns\TextColumn::make('default_assignee'),
+                Tables\Columns\TextColumn::make('defaultAssignee.name')
+
+                    ->label(__('Default Assignee')),
 
             ])
             ->filters([

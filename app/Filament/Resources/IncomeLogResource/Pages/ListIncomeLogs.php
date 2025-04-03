@@ -23,6 +23,7 @@ use pxlrbt\FilamentExcel\Exports\ExcelExport;
 class ListIncomeLogs extends ListRecords
 {
     protected static string $resource = IncomeLogResource::class;
+    protected ?string $maxContentWidth = 'full';
 
     protected function getHeaderActions(): array
     {

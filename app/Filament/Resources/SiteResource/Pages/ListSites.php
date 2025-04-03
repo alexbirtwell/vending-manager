@@ -10,6 +10,8 @@ class ListSites extends ListRecords
 {
     protected static string $resource = SiteResource::class;
 
+    protected ?string $maxContentWidth = 'full';
+
     protected function getHeaderActions(): array
     {
         return [

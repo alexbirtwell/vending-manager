@@ -31,7 +31,16 @@ class IncomeRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('date'),
+                Tables\Columns\TextColumn::make('date')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('amount')
+                    ->sortable()
+                    ->money(config('business.currency.code')),
+                Tables\Columns\TextColumn::make('type'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created')
+                    ->dateTime(),
             ])
             ->filters([
                 //
