@@ -77,8 +77,7 @@ class MachineResource extends Resource
                 Tables\Columns\TextColumn::make('machine_type'),
                 Tables\Columns\TextColumn::make('income_sum_amount')
                     ->sum('income', 'amount')
-                    ->numeric(2)
-                    ->prefix(config('business.currency.symbol'))
+                    ->money(config('business.currency.code'))
                     ->label('Income'),
                 Tables\Columns\TextColumn::make('expenses_sum_amount')
                     ->sum('expenses', 'amount')
