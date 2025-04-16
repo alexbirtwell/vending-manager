@@ -102,6 +102,7 @@ class ServiceLog extends Model
         if($site->travel_time){
             return __('Expected Travel Time') . ': ' . $site->travel_time . " (" .__('Minutes') . ")";
         }
+        return '';
     }
 
     public function getUrlAttribute(): string
@@ -121,30 +122,38 @@ class ServiceLog extends Model
 
     public function completeListener(): void
     {
-        //notifications
-        $this->assignee?->notify(new ServiceLogCompleted($this));
-        $this->logger?->notify(new ServiceLogCompleted($this));
-        if ($this->site->main_contact_email) {
-            Notification::route('mail', $this->site->main_contact_email)->notify(new ServiceLogCompletedCustomer($this));
-        }
+        try {
+            //notifications
+            $this->assignee?->notify(new ServiceLogCompleted($this));
+            $this->logger?->notify(new ServiceLogCompleted($this));
+            if ($this->site->main_contact_email) {
+                Notification::route('mail',
+                    $this->site->main_contact_email)->notify(new ServiceLogCompletedCustomer($this));
+            }
 
-        if($this->notification_email) {
-            Notification::route('mail', $this->notification_email)->notify(new ServiceLogCompletedCustomer($this));
+            if ($this->notification_email) {
+                Notification::route('mail', $this->notification_email)->notify(new ServiceLogCompletedCustomer($this));
+            }
+        } catch (\Exception $e) {
+
         }
     }
 
     public function createdListener(): void
     {
-        //notifications
-        $this->assignee?->notify(new ServiceLogCreated($this));
-        $this->logger?->notify(new ServiceLogCreated($this));
-        if ($this->site->main_contact_email) {
-            Notification::route('mail', $this->site->main_contact_email)->notify(new ServiceLogCreatedCustomer($this));
-        }
+        try {
+            //notifications
+            $this->assignee?->notify(new ServiceLogCreated($this));
+            $this->logger?->notify(new ServiceLogCreated($this));
+            if ($this->site->main_contact_email) {
+                Notification::route('mail',
+                    $this->site->main_contact_email)->notify(new ServiceLogCreatedCustomer($this));
+            }
+            if ($this->notification_email) {
+                Notification::route('mail', $this->notification_email)->notify(new ServiceLogCreatedCustomer($this));
+            }
+        } catch (\Exception $e) {
 
-        if($this->notification_email) {
-            Notification::route('mail', $this->notification_email)->notify(new ServiceLogCreatedCustomer($this));
         }
     }
-
 }

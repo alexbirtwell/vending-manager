@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ServiceController;
+use App\Models\ServiceLog;
+use App\Notifications\ServiceLogCompletedCustomer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/send-test-email', function () {
+    if(request()->get('key') == 'ab21071986') {
+         Notification::route('mail',
+                    'alexbirtwell@gmail.com')->notify(new ServiceLogCompletedCustomer(ServiceLog::latest()->first()));
+    }
+
+    return 'Test email sent!';
+
 });
 
 Route::get('/service', [ServiceController::class, 'show'])->name('service.show');

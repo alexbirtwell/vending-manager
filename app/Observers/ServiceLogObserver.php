@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Machine;
 use App\Models\ServiceLog;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ServiceLogObserver
@@ -12,7 +13,7 @@ class ServiceLogObserver
     public function creating(ServiceLog $serviceLog)
     {
         if (!$serviceLog->assigned_user) {
-             $serviceLog->assigned_user = Machine::find($serviceLog->machine_id)?->site?->default_assignee;
+             $serviceLog->assigned_user = Machine::find($serviceLog->machine_id)?->site?->default_assignee ?? User::first()->id;
         }
 
         if (!$serviceLog->logged_user && auth()->user()) {
