@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Integrations\SendLayer\SendLayerConnector;
 use App\Http\Livewire\Forms\PublicServiceForm;
 use App\Models\IncomeLog;
 use App\Models\Machine;
@@ -14,6 +15,7 @@ use App\Observers\MachineNoteObserver;
 use App\Observers\ServiceLogObserver;
 use App\Observers\ServiceNoteObserver;
 use App\Observers\SiteNoteObserver;
+use App\Services\Mail\SendLayerMailTransport;
 use App\View\Components\AppLayout;
 use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
@@ -21,6 +23,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Mail;
 use RalphJSmit\Filament\Activitylog\Infolists\Components\Timeline;
 use Spatie\Activitylog\Models\Activity;
 
@@ -96,5 +99,10 @@ class AppServiceProvider extends ServiceProvider
                 ]);
         });
 //        Livewire::component('app-layout', AppLayout::class);
+        Mail::extend('sendlayer', function (array $config) {
+            return new SendLayerMailTransport(
+                new SendLayerConnector()
+            );
+        });
     }
 }

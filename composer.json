@@ -18,6 +18,7 @@
         "phpsa/filament-authentication": "dev-main",
         "pxlrbt/filament-excel": "^2.1",
         "ralphjsmit/laravel-filament-activitylog": "*",
+        "saloonphp/saloon": "^3.11",
         "sentry/sentry-laravel": "^3.6",
         "spatie/laravel-data": "^3.6",
         "stechstudio/filament-impersonate": "^3.0"

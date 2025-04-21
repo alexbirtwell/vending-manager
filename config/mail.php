@@ -34,6 +34,12 @@ return [
     */
 
     'mailers' => [
+        'sendlayer' =>
+            [
+                'transport' => 'sendlayer',
+                'api_key' => env('SENDLAYER_API_KEY'),
+                'api_secret' => env('SENDLAYER_API_SECRET'),
+            ],
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
