@@ -37,8 +37,7 @@ return [
         'sendlayer' =>
             [
                 'transport' => 'sendlayer',
-                'api_key' => env('SENDLAYER_API_KEY'),
-                'api_secret' => env('SENDLAYER_API_SECRET'),
+                'api_key' => env('SENDLAYER_API_KEY')
             ],
         'smtp' => [
             'transport' => 'smtp',

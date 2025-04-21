@@ -80,7 +80,7 @@ class SendLayerMailTransport extends AbstractTransport
     private function setAuth(string $fromEmail): void
     {
         $this->client->withHeaderAuth(
-            config('mail.mailers.sendlayer.api_key')
+            'Bearer ' . config('mail.mailers.sendlayer.api_key')
         );
     }
 
@@ -97,9 +97,9 @@ class SendLayerMailTransport extends AbstractTransport
             $html = stream_get_contents($html);
         }
         [$attachments, $inlines, $html] = $this->prepareAttachments($email, $html);
-
         $message = [
-            'From' => $this->formatFromAddress($envelope->getSender()),
+            'From' => $this->formatAddress($envelope->getSender()),
+            'ReplyTo' => [$this->formatAddress($envelope->getSender())],
             'To' => $this->formatAddresses($this->getRecipients($email, $envelope)),
             'Subject' => $email->getSubject(),
             'Attachments' => $attachments,
@@ -161,8 +161,8 @@ class SendLayerMailTransport extends AbstractTransport
     private function formatAddress(Address $address): array
     {
         return [
-            'Email' => $address->getAddress(),
-            'Name' => $address->getName(),
+            'email' => $address->getAddress(),
+            'name' => $address->getName(),
         ];
     }
 
