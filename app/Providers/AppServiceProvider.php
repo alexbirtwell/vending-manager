@@ -36,7 +36,38 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Create a custom FilamentAuthentication class that fixes the issue with overrideResources
+        $this->app->bind(\Phpsa\FilamentAuthentication\FilamentAuthentication::class, function ($app) {
+            return new class extends \Phpsa\FilamentAuthentication\FilamentAuthentication {
+                public static function make(): \Phpsa\FilamentAuthentication\FilamentAuthentication
+                {
+                    $instance = new static();
+                    $config = config('filament-authentication');
+
+                    // Ensure models is an array
+                    $instance->overrideModels($config['models'] ?? []);
+
+                    // Ensure resources is an array
+                    $instance->overrideResources($config['resources'] ?? []);
+
+                    // Set other configuration values with defaults
+                    $instance->setPreload(
+                        $config['preload_roles'] ?? true,
+                        $config['preload_permissions'] ?? true
+                    );
+
+                    $instance->setImpersonation(
+                        $config['impersonate']['enabled'] ?? false,
+                        $config['impersonate']['guard'] ?? 'web',
+                        $config['impersonate']['redirect'] ?? '/'
+                    );
+
+                    $instance->withSoftDeletes($config['soft_deletes'] ?? false);
+
+                    return $instance;
+                }
+            };
+        });
     }
 
     /**

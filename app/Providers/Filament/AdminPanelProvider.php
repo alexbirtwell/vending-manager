@@ -78,7 +78,8 @@ class AdminPanelProvider extends PanelProvider
         ->emailVerification()
         ->profile()
             ->plugins([
-                FilamentActivitylog::make()
+                FilamentActivitylog::make(),
+                \Phpsa\FilamentAuthentication\FilamentAuthentication::make()
             ]);
     }
 }

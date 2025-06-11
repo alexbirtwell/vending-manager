@@ -15,7 +15,7 @@
         "laravel/tinker": "^2.8",
         "lorisleiva/laravel-actions": "^2.6",
         "phpoffice/phpspreadsheet": "^1.29",
-        "phpsa/filament-authentication": "dev-main",
+        "phpsa/filament-authentication": "*",
         "pxlrbt/filament-excel": "^2.1",
         "ralphjsmit/laravel-filament-activitylog": "*",
         "saloonphp/saloon": "^3.11",
@@ -81,10 +81,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/alexbirtwell/filament-authentication"
-        },
         {
             "type": "composer",
             "url": "https://satis.ralphjsmit.com"

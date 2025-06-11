@@ -22,8 +22,8 @@ return [
             'precision' => 2,
         ],
     'customer_notifications' => [
-        'from_name' => 'Best Vending Solutions',
-        'email' => 'sales@bestvendingsolutions.com',
+        'from_name' => 'BPS Vending Ltd',
+        'email' => 'sales@bpsvending.co.uk',
         'telephone' => '01254 395 000',
     ]
 ];
