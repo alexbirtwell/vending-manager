@@ -10,6 +10,10 @@ use App\Filament\Resources\SiteResource\Widgets\TopMachinesTotal;
 use App\Filament\Resources\SiteResource\Widgets\TopSites;
 use App\Filament\Widgets\ServiceLogsOverview;
 use App\Filament\Widgets\StatsOverview;
+use App\Filament\Widgets\FinancialOverviewWidget;
+use App\Filament\Widgets\MachinePerformanceWidget;
+use App\Filament\Widgets\ServiceAlertsWidget;
+use App\Filament\Widgets\IncomeTrendWidget;
 use App\Models\IncomeLog;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -46,18 +50,20 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
+            
                 MyOpenServiceLogs::class,
                 StatsOverview::class,
                 ServiceLogsOverview::class,
+                ServiceAlertsWidget::class,
                 TopSites::class,
                 OpenServiceLogs::class,
                 TopMachinesMonth::class,
                 TopMachinesTotal::class,
+                FinancialOverviewWidget::class,
+                MachinePerformanceWidget::class,
+                IncomeTrendWidget::class,
                 IncomeChart::class
-
             ])
             ->middleware([
                 EncryptCookies::class,
