@@ -12,6 +12,7 @@
         "jeffgreco13/filament-breezy": "^2.1.9",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^5.9",
         "laravel/tinker": "^2.8",
         "lorisleiva/laravel-actions": "^2.6",
         "phpoffice/phpspreadsheet": "^1.29",

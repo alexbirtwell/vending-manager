@@ -192,4 +192,10 @@ class SiteResource extends Resource
     {
         return auth()->user()->hasPermissionTo('View Site');
     }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with(['incomeLogs', 'defaultAssignee']);
+    }
 }

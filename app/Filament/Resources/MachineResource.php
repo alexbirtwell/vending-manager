@@ -136,4 +136,10 @@ class MachineResource extends Resource
     {
         return auth()->user()->hasPermissionTo('View Machine');
     }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with('site');
+    }
 }
