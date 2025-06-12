@@ -16,3 +16,4 @@ yarn-error.log
 /public/js/filament/
 /public/css/filament/
 /public/vendor/telescope/
+.DS_Store
