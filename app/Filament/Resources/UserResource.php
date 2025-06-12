@@ -20,7 +20,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Password;
-use Phpsa\FilamentAuthentication\Resources\UserResource\RelationManager\RoleRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\RoleRelationManager;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
