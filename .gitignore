@@ -15,3 +15,4 @@ yarn-error.log
 /.vscode
 /public/js/filament/
 /public/css/filament/
+/public/vendor/telescope/
